@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'news-item',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./news-item.component.scss']
 })
 export class NewsItemComponent {
-
+  @Input() childData: object;
 }

@@ -1,4 +1,8 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="news-list">
-  <news-item *ngFor="let hero of heroes" class="news-item"></news-item>
+  <news-item
+    *ngFor="let item of newsItemData; let i = index"
+    [childData]="newsItemData[i]"
+    class="news-item"
+  >
+  </news-item>
 </div>
