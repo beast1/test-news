@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  newsItemData = [{
-    'title': '1message from parent',
-    'descr': '1secd',
-    'preview': 'http://test.kamis.ru/1.jpg'
-  }, {
-    'title': '2message from parent',
-    'descr': '2secd',
-    'preview': 'http://test.kamis.ru/2.jpg'
-  }, {
-    'title': '3message from parent',
-    'descr': '3secd',
-    'preview': 'http://test.kamis.ru/3.jpg'
-  }];
+export class AppComponent implements OnInit {
+
+  newsItemData:  object;
+
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.http.get('http://test.kamis.ru/api/news').subscribe(data => {
+      this.newsItemData = data;
+    });
+  }
 }
